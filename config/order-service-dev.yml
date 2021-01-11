@@ -1,22 +1,18 @@
-sp:
-  service:
-    item-service: item-service
-
 spring:
   application:
     name: order-service
+  cloud:
+    config:
+      override-none: true
 
-
+server:
+  port: 8201  
+  
 eureka:
   client:
     service-url:
-      defaultZone: http://eureka1:2001/eureka,http://eureka2:2002/eureka
-
-#eureka:
-#  client:
-#    service-url:
-#      defaultZone: http://eureka1:2001/eureka, http://eureka2:2002/eureka#    registry-fetch-interval-seconds: 5
-
+      defaultZone: http://eureka1:2001/eureka, http://eureka2:2002/eureka
+      
 feign:
   hystrix:
     enabled: true
@@ -25,27 +21,4 @@ management:
   endpoints:
     web:
       exposure:
-        include: hystrix.stream, refresh
-        
-        
-hystrix:
-  command:
-    default: 
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 3000
-#
-#logging:#  level:#    c.n.loadbalancer.LoadBalancerContext: debug
-
----
-spring:  profiles: order1
-  
-server:  port: 8201
-  
----
-spring:  profiles: order2
-  
-server:  port: 8202
-  
-
+        include: hystrix.stream
