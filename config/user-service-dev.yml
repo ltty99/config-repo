@@ -1,0 +1,21 @@
+sp: "[{\"id\":7,\"username\":\"wang\",\"password\":\"123\"},{\"id\":8,\"username\":\"liu\",\"password\":\"321\"},{\"id\":9,\"username\":\"xing\",\"password\":\"456\"}]"
+spring:
+  application:
+    name: user-service
+    
+server:
+  port: 8101
+#  rabbitmq:
+#    host: 192.168.64.140
+#    port: 5672
+#    username: admin
+#    password: admin
+
+
+  
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka1:2001/eureka,http://eureka2:2002/eureka
+      
+
